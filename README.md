@@ -1,5 +1,5 @@
 # Python_Gui
-Practice GUI development on Python TKinter module
+Practice GUI development on Python TKinter module.
 
 Requirements:
 - Linux or windows development environment
