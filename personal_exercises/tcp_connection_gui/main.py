@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
+import tkinter
 from guiFunctions import * 
 import json
 import ctypes
@@ -8,7 +9,7 @@ import ctypes
 
 
 root = Tk()
-root.geometry("400x300")
+root.geometry("400x400")
 root.title("TCP Send")
 
 tcpObject = TCP()
@@ -46,15 +47,21 @@ except:
 
 
 ttk.Button(ipConfig, text = "Show IP", command=printIpInfo).pack()
-ttk.Button(ipConfig, text = "Connect", command = lambda : tcpObject.setIP(ipAddress,port)).pack()
+ttk.Button(ipConfig, text = "Connect", command = lambda : tcpObject.setIP(ipAddress,port,status)).pack()
 
 tcpSend = Frame(root).pack()
-ttk.Label(text = "Send message ").pack(pady=10)
-text = Text(tcpSend,width = 50, height = 5, wrap = 'word',state='normal')
+ttk.Label(tcpSend,text = "Send message ").pack(pady=(10,0))
+
+text = Text(tcpSend,width = 30, height = 3, wrap = 'word',state='normal')
 text.pack()
 
-ttk.Button(tcpSend,text = "Send",command = lambda:tcpObject.sendText(text)).pack()
+ttk.Label(tcpSend,text = "Status").pack()
+
+status = Text(tcpSend,width = 30, height = 3, wrap = 'word',state='disabled')
+status.pack()
+
+ttk.Button(tcpSend,text = "Send",command = lambda:tcpObject.sendText(text,status)).pack()
+
 
 ctypes.windll.shcore.SetProcessDpiAwareness(3)
-
 root.mainloop()
