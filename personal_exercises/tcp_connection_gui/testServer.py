@@ -27,8 +27,9 @@ server.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
 print("Starting Server...")
 server.bind(address)
 server.listen(1)
+exit = False
 
-while True:
+while exit == False:
     connection, client_address = server.accept()
 
     try: 
@@ -42,5 +43,5 @@ while True:
                 break
 
     finally: 
-        print("%s")
         connection.close()
+        exit = True
