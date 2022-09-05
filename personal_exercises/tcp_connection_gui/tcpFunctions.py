@@ -58,6 +58,8 @@ class TCPHandler:
         self.port = port
         self.timeout = timeout
         self.socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM) #Socket on IPV4 TCP/IP
+        self.socket.settimeout(timeout)
+
 
     def connect(self):
         if self.ip != "invalid":
