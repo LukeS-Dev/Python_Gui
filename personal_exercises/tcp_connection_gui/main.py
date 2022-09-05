@@ -3,10 +3,13 @@ from tkinter import ttk
 from tkinter import messagebox
 from guiFunctions import * 
 import json
+import ctypes
+ 
+
 
 root = Tk()
 root.geometry("400x300")
-root.title("TCP Data Senders")
+root.title("TCP Send")
 
 tcpObject = TCP()
 
@@ -52,5 +55,6 @@ text.pack()
 
 ttk.Button(tcpSend,text = "Send",command = lambda:tcpObject.sendText(text)).pack()
 
+ctypes.windll.shcore.SetProcessDpiAwareness(3)
 
 root.mainloop()

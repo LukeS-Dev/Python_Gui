@@ -6,7 +6,7 @@ class TCP():
     def __init__(self):
         self.tcp = ''
 
-    def setIP(self,strIp,strPort,textbox=True):
+    def setIP(self,strIp,strPort):
         ip = strIp.get()
         port = int(strPort.get())
 
@@ -15,7 +15,8 @@ class TCP():
         
         print(ip + " : " + str(port))
 
-        self.tcp = TCPHandler(ip,port,timeout=3)
+        self.tcp = TCPHandler(ip,port,timeout=2)
+        
         response = self.tcp.connect()
         
         if response == "invalid":
